@@ -76,5 +76,5 @@ vim.diagnostic.config({
   underline = true,
 })
 
-require('lualine').setup({
-})
+require('lualine').setup({})
+require('mason').setup({})
