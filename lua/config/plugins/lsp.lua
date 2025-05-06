@@ -20,6 +20,11 @@ return {
     require("lspconfig").lua_ls.setup { capabilities = capabilities }
     require('lspconfig').gopls.setup { capabilities = capabilities }
     require('lspconfig').sqlls.setup { capabilities = capabilities }
+    require('lspconfig').ts_ls.setup { capabilities = capabilities, init_options = {
+      preferences = {
+        disableSuggestions = true,
+      }
+    } }
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('my.lsp', {}),
