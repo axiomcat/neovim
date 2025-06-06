@@ -14,11 +14,6 @@ return {
     require('telescope').load_extension('fzf')
     require "config.telescope.multigrep".setup()
 
-    local map = function(keys, func, desc)
-      vim.keymap.set('n', keys, func, { desc = 'LSP: ' .. desc })
-    end
-
-
     local builtin = require('telescope.builtin')
     local default_opts = require('telescope.themes').get_ivy()
 
@@ -28,12 +23,11 @@ return {
       end
     end
 
-    map('gd', builtin.lsp_definitions, '[G]oto [D]efinition')
     vim.keymap.set('n', '<leader>ff', opts_built_in(builtin.find_files, default_opts), { desc = 'Telescope find files' })
     vim.keymap.set('n', '<leader>fh', opts_built_in(builtin.find_help, default_opts), { desc = 'Telescope find help' })
     vim.keymap.set('n', '<leader>fw', opts_built_in(builtin.live_grep, default_opts), { desc = 'Telescope live grep' })
     vim.keymap.set('n', '<leader>fb', opts_built_in(builtin.buffers, default_opts), { desc = 'Telescope buffers' })
-    vim.keymap.set('n', '<leader>fh', opts_built_in(builtin.help_tags, default_opts), { desc = 'Telescope help tags' })
+    vim.keymap.set('n', '<leader>ft', opts_built_in(builtin.help_tags, default_opts), { desc = 'Telescope help tags' })
     vim.keymap.set("n", "<space>nn", function()
       local opts = require('telescope.themes').get_ivy({
         cwd = vim.fn.stdpath("config")
